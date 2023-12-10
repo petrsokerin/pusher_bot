@@ -1,0 +1,4 @@
+pandas==1.5.3
+telebot==0.0.5
+pyyaml==6.0
+openpyxl==3.1.2
