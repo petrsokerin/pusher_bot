@@ -45,7 +45,7 @@ def form_message(df_filtered: pd.DataFrame) -> str:
      
     message = ''
     for row_id, row in df_filtered.iterrows():
-        line = "Поменялся статус задачи \n {} {} \n с {} на {}, ответственный {}\n\n".format(
+        line = "Поменялся статус задачи \n{} {} \nс {} на {}, ответственный {}\n\n".format(
             row['Material_ID'], 
             row['Тема'], 
             row['Status_old'], 
@@ -67,7 +67,6 @@ def main():
 
     df_status_new = load_google_table(cfg['doc_id'], sheet_name='Актуальный план')
     df_status_new = transform_general_list(df_status_new)
-    print(df_status_new.head())
 
     bot = init_bot(cfg['tg_bot_id'])
     df_filtered = filter_data(df_status_new, df_status_prev, bot, my_chat_id)
