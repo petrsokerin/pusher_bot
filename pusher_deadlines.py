@@ -99,7 +99,7 @@ def main():
     message = form_message(df_to_push)
     
     bot = init_bot(cfg['tg_bot_id'])
-    send_message_to_group_topic(bot, chat_id, message)
+    bot.send_message(chat_id=chat_id, text=message)
     #bot.polling(none_stop=True, interval=0)
 
 if __name__ == "__main__":
