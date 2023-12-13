@@ -7,7 +7,7 @@ import telebot
 def transform_general_list(df_general: pd.DataFrame) -> pd.DataFrame:
     df_general = df_general[
         ['№ разд',	'№', 'Раздел', 'Тема', 'Формат', 'Время, мин', 'Автор материалов', 
-        'Проверка',	'Дедлайн по материалам', 'Дедлайн по ревью', 'Статус'
+        'Проверка',	'Дедлайн по материалам', 'Дедлайн по ревью', 'Статус', 'Ссылка на материалы'
     ]]
 
     df_general['Material_ID'] = df_general['№ разд'].astype(str) + '-' + df_general['№'].astype(str)
@@ -27,7 +27,7 @@ def load_google_table(token: str, sheet_name: str = 'Актуальный пла
 
     return df
 
-def send_message_to_group_topic(bot, chat_id: str, message: str):
+def send_message(bot, chat_id: str, message: str):
     bot.send_message(chat_id=chat_id, text=message)
 
 def init_bot(bot_id: str):
