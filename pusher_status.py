@@ -115,6 +115,7 @@ def main():
 
     df_status_new = load_google_table(cfg['doc_id'], sheet_name='Актуальный план')
     df_status_new = transform_general_list(df_status_new)
+    df_status_new.to_csv('data_status.csv', index=False)
 
     df_authors = load_google_table(cfg['doc_id'], sheet_name='Авторы')
     dict_author_tg = dict(zip(df_authors['Имя'], df_authors['Телеграмм Ник']))
@@ -128,8 +129,6 @@ def main():
 
         message_to_chat = form_message_to_chat(df_filtered, dict_author_tg, cfg['extra_push_nick'])
         bot.send_message(chat_id=chat_id, text=message_to_chat)
-
-    df_status_new.to_csv('data_status.csv', index=False)
 
 if __name__ == "__main__":
     main()
