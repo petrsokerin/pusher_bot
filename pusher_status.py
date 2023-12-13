@@ -44,12 +44,14 @@ def send_len_error_push(bot, my_chat_id: str):
 def form_message_to_me(df_filtered: pd.DataFrame) -> str:
     message = ''
     for row_id, row in df_filtered.iterrows():
-        line = "Поменялся статус задачи \n{} {} \nс {} на {}, ответственный {}\n\n".format(
+        line = "Поменялся статус задачи \n{} {} {}\nс {} на {}, ответственный {}\n{}\n\n".format(
+            row['Формат'],
             row['Material_ID'], 
             row['Тема'], 
             row['Status_old'], 
             row['Status_new'], 
-            row['Автор материалов']
+            row['Автор материалов'],
+            row['Ссылка на материалы']
         )
         message += line
 
